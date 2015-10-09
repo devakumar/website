@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}
+    Events by TSS TVM
+{% endblock %}
+{% load staticfiles %}
+{% block main %}
+<section class="navescape">
+<div class="container">
+{% if all_events %}
+<h2>List of all events</h2>
+  <div class="panel-group">
+{% for event in all_events %}
+    <div class="panel panel-primary">
+      <div class="panel-heading"><a href="{% url 'event_detail' event.id %}"> {{ event.name }}</a>  on {{ event.date }}</div>
+      <div class="panel-body">{{ event.description }}</div>
+    </div>
+{% endfor %}
+  </div>
+{% else %}
+<p>No events till now.</p>
+{% endif %}
+</div>
+</section>
+{% endblock %}

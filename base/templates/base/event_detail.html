@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ event.name }}
+{% endblock %}
+{% load staticfiles %}
+{% block main %}
+<div class="container">
+<h2>{{ event.name }}</h2>
+    <div class="panel panel-primary">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="panel-heading"><a href="{% url 'event_detail' event.id %}"> {{ event.name }}</a>  on {{ event.date }}</div>
+          <div class="panel-body">{{event.name}} conducted at {{event.venue}} on {{ event.date }}</div>
+        </div>
+        <div class="col-md-8">
+          <div class="panel-heading">Description</div>
+          <div class="panel-body">{{ event.description }}</div>
+        </div>
+      </div>
+    </div>
+</div>
+<blockquote> Interested in other events ... find more <a href="{% url 'events' %}"> here</a> </blockquote>
+{% endblock %}
